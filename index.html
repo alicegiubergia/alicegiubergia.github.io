@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  DA COMPLETARE — restano 4 segnaposto, marcati [[ ... ]]
+  e visibili in ambra sulla pagina. Cerca "[[" .
+    1. risultato principale dello studio multi-echo vs single-echo
+    2. risultato principale dello studio su processing e connettivita
+    3. stato / risultato del progetto fingerprint sul sonno
+    4. DOI di Imaging Neuroscience 2025
+  Da mettere nella stessa cartella: cv.pdf
+  Opzionale: og-image.png (1200x630) per le anteprime sui social
+  ============================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alice Giubergia — neuroimaging engineer, fMRI methods</title>
+<meta name="description" content="Alice Giubergia, PhD. Neuroimaging engineer working on fMRI acquisition and processing methodology: multi-echo EPI, denoising, functional connectivity, laminar fMRI at 7T. Python, SPM, FSL, ANTs, FreeSurfer.">
+<meta property="og:title" content="Alice Giubergia — neuroimaging engineer, fMRI methods">
+<meta property="og:description" content="PhD in bioengineering. I turn large, noisy 4D imaging datasets into validated, reproducible pipelines.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFF1EE;
+    --paper-2:#E6EAE7;
+    --ink:#17252C;
+    --ink-soft:#51646B;
+    --line:#C9D2CF;
+    --cool:#2C6E8F;
+    --warm:#B87333;
+    --measure:64ch;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Newsreader",Georgia,serif;
+    font-size:19px;
+    line-height:1.62;
+    font-weight:400;
+  }
+  h1,h2,h3,.ui{font-family:"Archivo",system-ui,sans-serif;line-height:1.15;}
+  a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .15s,color .15s}
+  a:hover{color:var(--cool);border-color:var(--cool)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--cool);outline-offset:3px;border-radius:2px}
+
+  .ph{
+    color:var(--warm);
+    border-bottom:1px dotted var(--warm);
+    font-family:"Archivo",sans-serif;
+    font-size:.82em;
+    letter-spacing:.01em;
+  }
+
+  .shell{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 6vw 8rem;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .rail{display:none}
+  @media (min-width:1000px){
+    .shell{grid-template-columns:170px minmax(0,1fr);column-gap:5rem;padding-right:4vw}
+    .rail{
+      display:block;
+      position:sticky;
+      top:0;
+      align-self:start;
+      height:100vh;
+      padding-top:9.5rem;
+      font-family:"Archivo",sans-serif;
+      font-size:.78rem;
+      letter-spacing:.02em;
+    }
+    .rail ol{list-style:none;margin:0;padding:0;position:relative}
+    .rail ol::before{
+      content:"";position:absolute;left:0;top:.5em;bottom:.5em;width:1px;background:var(--line);
+    }
+    .rail li{position:relative;padding:0 0 1.15rem 1.4rem}
+    .rail li::before{
+      content:"";position:absolute;left:0;top:.62em;width:9px;height:1px;background:var(--line);
+      transition:width .2s,background .2s;
+    }
+    .rail a{border:0;color:var(--ink-soft)}
+    .rail a:hover{color:var(--ink)}
+    .rail li.on::before{width:20px;height:2px;background:var(--warm);top:.58em}
+    .rail li.on a{color:var(--ink);font-weight:600}
+    .rail .depth{
+      margin-top:1.6rem;padding-left:1.4rem;color:var(--ink-soft);font-size:.7rem;opacity:.75;
+    }
+  }
+
+  .lang{
+    position:fixed;top:1rem;right:1rem;z-index:10;
+    display:flex;gap:2px;padding:3px;
+    background:var(--paper);border:1px solid var(--line);border-radius:999px;
+  }
+  .lang button{
+    font-family:"Archivo",sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.04em;
+    padding:.34rem .7rem;border:0;border-radius:999px;background:transparent;color:var(--ink-soft);cursor:pointer;
+  }
+  .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+  header.hero{padding:8rem 0 4.5rem;max-width:var(--measure)}
+  .hero h1{
+    font-size:clamp(2.7rem,8vw,4.9rem);
+    font-weight:600;
+    letter-spacing:-.03em;
+    margin:0 0 1.1rem;
+  }
+  .hero .lede{
+    font-size:clamp(1.12rem,2.2vw,1.35rem);
+    line-height:1.5;
+    margin:0 0 1.6rem;
+    max-width:36ch;
+  }
+  .hero .bio{color:var(--ink-soft);margin:0 0 1.4rem}
+  .where{
+    font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--ink-soft);
+    margin:0 0 2.4rem;line-height:1.5;
+  }
+  .actions{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center}
+  .btn{
+    font-family:"Archivo",sans-serif;font-size:.85rem;font-weight:600;
+    padding:.6rem 1.1rem;border:1px solid var(--ink);border-radius:2px;
+  }
+  .btn.primary{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .btn.primary:hover{background:var(--cool);border-color:var(--cool);color:#fff}
+  .btn:hover{color:var(--cool);border-color:var(--cool)}
+
+  section{padding:4.5rem 0;border-top:1px solid var(--line)}
+  section > h2{
+    font-size:1.05rem;font-weight:700;letter-spacing:-.01em;margin:0 0 2.4rem;
+  }
+  .prose{max-width:var(--measure)}
+
+  .project{
+    display:grid;grid-template-columns:1fr;gap:.5rem;
+    padding:1.9rem 0;border-top:1px solid var(--paper-2);
+    max-width:var(--measure);
+  }
+  .project:first-of-type{border-top:0;padding-top:0}
+  .project h3{font-size:1.28rem;font-weight:600;margin:0;letter-spacing:-.01em}
+  .project .role{font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--ink-soft);margin:0}
+  .project p{margin:.35rem 0 0}
+  .project .out{margin-top:.5rem;font-size:.94em}
+  .tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem;padding:0;list-style:none}
+  .tags li{
+    font-family:"Archivo",sans-serif;font-size:.72rem;color:var(--ink-soft);
+    border:1px solid var(--line);border-radius:2px;padding:.2rem .5rem;
+  }
+
+  .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:2rem 2.5rem;max-width:900px}
+  .skills h3{font-size:.82rem;font-weight:700;margin:0 0 .55rem;color:var(--cool)}
+  .skills p{margin:0;font-size:.96em}
+
+  .cv-item{display:grid;grid-template-columns:9.5rem 1fr;gap:1.2rem;padding:1.05rem 0;border-top:1px solid var(--paper-2);max-width:780px}
+  .cv-item:first-of-type{border-top:0}
+  .cv-item .yr{font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--ink-soft);padding-top:.28rem}
+  .cv-item h3{font-size:1.02rem;font-weight:600;margin:0}
+  .cv-item p{margin:.15rem 0 0;font-size:.95em;color:var(--ink-soft)}
+  @media (max-width:620px){
+    .cv-item{grid-template-columns:1fr;gap:.15rem}
+    .cv-item .yr{padding-top:0}
+  }
+
+  .pub{padding:1.1rem 0;border-top:1px solid var(--paper-2);max-width:var(--measure)}
+  .pub:first-of-type{border-top:0}
+  .pub p{margin:0;font-size:.96em}
+  .pub .meta{font-family:"Archivo",sans-serif;font-size:.78rem;color:var(--ink-soft);margin-top:.25rem}
+  .count{font-family:"Archivo",sans-serif;font-size:.88rem;color:var(--ink-soft);margin:0 0 2rem;max-width:var(--measure)}
+
+  footer{padding:3.5rem 0 0;border-top:1px solid var(--line);max-width:var(--measure)}
+  footer p{font-family:"Archivo",sans-serif;font-size:.8rem;color:var(--ink-soft)}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="lang" role="group" aria-label="Language">
+  <button type="button" id="btn-en" aria-pressed="true">EN</button>
+  <button type="button" id="btn-it" aria-pressed="false">IT</button>
+</div>
+
+<div class="shell">
+
+  <nav class="rail ui" aria-label="Sections">
+    <ol>
+      <li><a href="#about" data-en="About" data-it="Profilo"></a></li>
+      <li><a href="#work" data-en="Selected work" data-it="Progetti"></a></li>
+      <li><a href="#skills" data-en="Skills" data-it="Competenze"></a></li>
+      <li><a href="#background" data-en="Background" data-it="Percorso"></a></li>
+      <li><a href="#publications" data-en="Publications" data-it="Pubblicazioni"></a></li>
+    </ol>
+    <p class="depth" data-en="Scroll depth" data-it="Profondita"></p>
+  </nav>
+
+  <main>
+    <header class="hero" id="about">
+      <h1>Alice Giubergia</h1>
+      <p class="lede" data-en="I work on fMRI methods: acquisition, denoising, and the processing choices in between." data-it="Mi occupo di metodi fMRI: acquisizione, denoising, e le scelte di processing che stanno in mezzo."></p>
+      <p class="bio" data-en="PhD in Information Engineering (bioengineering) and five years of neuroimaging work. My doctoral research was methodological: benchmarking multi-echo against single-echo EPI, testing denoising strategies, and measuring how preprocessing choices propagate into functional-connectivity estimates — three studies published as first author. I like owning a problem end to end: experimental design, acquisition in a clinical setting, Python and MATLAB pipelines, statistical modelling, and explaining the result to people who do not write code." data-it="Dottorato in Ingegneria dell'Informazione (bioingegneria) e cinque anni di lavoro nel neuroimaging. La mia ricerca di dottorato e stata metodologica: confronto tra EPI multi-echo e single-echo, strategie di denoising, e quanto le scelte di preprocessing si propaghino nelle stime di connettivita funzionale — tre studi pubblicati da primo autore. Mi piace seguire un problema dall'inizio alla fine: disegno sperimentale, acquisizione in ambito clinico, pipeline in Python e MATLAB, modellazione statistica, e spiegare il risultato a chi non scrive codice."></p>
+      <p class="where" data-en="Research Engineer, Neuroimaging Lab, IRCCS Eugenio Medea — Associazione La Nostra Famiglia, Bosisio Parini (LC), Italy. Nine peer-reviewed articles, three as first author; conference contributions at OHBM, ISMRM and ESMRMB." data-it="Research Engineer, Neuroimaging Lab, IRCCS Eugenio Medea — Associazione La Nostra Famiglia, Bosisio Parini (LC). Nove articoli peer-reviewed, tre da primo autore; contributi a OHBM, ISMRM ed ESMRMB."></p>
+      <div class="actions">
+        <a class="btn primary ui" href="cv.pdf" data-en="Download CV (PDF)" data-it="Scarica il CV (PDF)"></a>
+        <a class="btn ui" href="mailto:alice.giubergia@gmail.com" data-en="Email" data-it="Email"></a>
+        <a class="btn ui" href="https://www.linkedin.com/in/alicegiubergia">LinkedIn</a>
+        <a class="btn ui" href="https://github.com/alicegiubergia">GitHub</a>
+        <a class="btn ui" href="https://orcid.org/0000-0002-7084-4220">ORCID</a>
+      </div>
+    </header>
+
+    <section id="work">
+      <h2 data-en="Selected work" data-it="Progetti selezionati"></h2>
+
+      <article class="project">
+        <h3 data-en="Multi-echo vs single-echo EPI for task fMRI" data-it="EPI multi-echo e single-echo per la fMRI da task"></h3>
+        <p class="role" data-en="First author — Imaging Neuroscience, 2025" data-it="Prima autrice — Imaging Neuroscience, 2025"></p>
+        <p data-en="Multi-echo acquisition promises cleaner signal, but at a cost in sequence complexity and processing. I ran the head-to-head comparison on task fMRI data so the choice could be made on evidence rather than on habit." data-it="L'acquisizione multi-echo promette un segnale piu pulito, ma al prezzo di una sequenza e di un processing piu complessi. Ho impostato il confronto diretto su dati di fMRI da task, per rendere la scelta una decisione basata su evidenza e non sull'abitudine."></p>
+        <p class="out"><span class="ph" data-en="[[one line: the main result — which sequence won, on which metric]]" data-it="[[una riga: il risultato principale — quale sequenza vince, su quale metrica]]"></span></p>
+        <ul class="tags"><li>MATLAB</li><li>SPM</li><li data-en="Multi-echo EPI" data-it="EPI multi-echo"></li><li data-en="Denoising" data-it="Denoising"></li><li data-en="Sequence benchmarking" data-it="Confronto tra sequenze"></li></ul>
+      </article>
+
+      <article class="project">
+        <h3 data-en="How processing choices propagate into functional connectivity" data-it="Come le scelte di processing si propagano nella connettivita funzionale"></h3>
+        <p class="role" data-en="First author — Journal of Neuroscience Research, 2026" data-it="Prima autrice — Journal of Neuroscience Research, 2026"></p>
+        <p data-en="Connectivity estimated from task-evoked data depends on a long chain of preprocessing decisions that are usually taken silently. I made that chain explicit and quantified how much each choice moves the final estimate." data-it="La connettivita stimata da dati task-evoked dipende da una lunga catena di decisioni di preprocessing, di solito prese in silenzio. Ho reso esplicita quella catena e quantificato quanto ogni scelta sposti la stima finale."></p>
+        <p class="out"><span class="ph" data-en="[[one line: what the comparison showed, and the practical recommendation]]" data-it="[[una riga: cosa ha mostrato il confronto e la raccomandazione pratica]]"></span></p>
+        <ul class="tags"><li>Python</li><li data-en="ICA-based nuisance regression" data-it="Regressione dei confondenti via ICA"></li><li data-en="Functional connectivity" data-it="Connettivita funzionale"></li><li data-en="Group-level inference" data-it="Inferenza di gruppo"></li></ul>
+      </article>
+
+      <article class="project">
+        <h3 data-en="Reading words that are hard to see" data-it="Leggere parole difficili da vedere"></h3>
+        <p class="role" data-en="First author — Behavioral and Brain Functions, 2026" data-it="Prima autrice — Behavioral and Brain Functions, 2026"></p>
+        <p data-en="I designed, implemented and validated an fMRI paradigm for visually degraded word reading — from programming the task to collecting the MR data — and used it to ask how the dorsal stream is recruited when recognition gets harder in a transparent orthography." data-it="Ho disegnato, implementato e validato un paradigma fMRI per la lettura di parole visivamente degradate — dalla programmazione del task all'acquisizione dei dati MR — e l'ho usato per studiare come viene reclutato lo stream dorsale quando il riconoscimento si fa piu difficile, in un'ortografia trasparente."></p>
+        <p class="out" data-en="Published as first author; the paradigm is now reused in follow-up work in the lab." data-it="Pubblicato come prima autrice; il paradigma viene ora riutilizzato in lavori successivi del laboratorio."></p>
+        <ul class="tags"><li data-en="Experimental design" data-it="Disegno sperimentale"></li><li>Presentation&reg;</li><li>SPM</li><li data-en="Task fMRI, GLM" data-it="fMRI da task, GLM"></li></ul>
+      </article>
+
+      <article class="project">
+        <h3 data-en="A laminar fMRI pipeline at 7T" data-it="Una pipeline di fMRI laminare a 7T"></h3>
+        <p class="role" data-en="Current work — supported by an AIRMM travel grant" data-it="Lavoro in corso — sostenuto da un AIRMM travel grant"></p>
+        <p data-en="Layer-specific fMRI asks where inside the cortical ribbon a signal comes from, so the whole analysis rests on segmentation and depth sampling. I built the end-to-end pipeline with ANTs, FreeSurfer and LayNii, producing group-level cortical-depth activation profiles across ROIs." data-it="La fMRI laminare chiede in quale punto del nastro corticale nasce il segnale: tutta l'analisi poggia quindi su segmentazione e campionamento in profondita. Ho costruito la pipeline end-to-end con ANTs, FreeSurfer e LayNii, ottenendo profili di attivazione in profondita corticale a livello di gruppo su piu ROI."></p>
+        <ul class="tags"><li>ANTs</li><li>FreeSurfer</li><li>LayNii</li><li>7T</li><li data-en="Surface-based analysis" data-it="Analisi su superficie"></li></ul>
+      </article>
+
+      <article class="project">
+        <h3 data-en="An individual fingerprint from sleep-state transitions" data-it="Un'impronta individuale dalle transizioni tra stati di sonno"></h3>
+        <p class="role" data-en="Current work — simultaneous fMRI + EEG" data-it="Lavoro in corso — fMRI + EEG simultanei"></p>
+        <p data-en="Brain activity is usually summarised by its average. I looked at the dynamics instead: state-transition matrices built from EEG-scored 30-second epochs, cost-based distance metrics between them, and classification validated on held-out runs — asking whether those transitions are stable enough within a person to identify them." data-it="L'attivita cerebrale di solito viene riassunta dalla sua media. Qui ho guardato la dinamica: matrici di transizione tra stati costruite su epoche di 30 secondi scorate all'EEG, metriche di distanza basate sul costo, e classificazione validata su run tenute fuori — per capire se quelle transizioni siano abbastanza stabili dentro un soggetto da identificarlo."></p>
+        <p class="out"><span class="ph" data-en="[[one line: identification accuracy, or current status if unpublished]]" data-it="[[una riga: accuratezza di identificazione, o stato attuale se non ancora pubblicato]]"></span></p>
+        <ul class="tags"><li>Python</li><li>EEG + fMRI</li><li data-en="State dynamics" data-it="Dinamiche di stato"></li><li data-en="Classification, cross-validation" data-it="Classificazione, cross-validazione"></li></ul>
+      </article>
+
+      <article class="project">
+        <h3>marcatempo</h3>
+        <p class="role" data-en="Side project, used daily" data-it="Progetto personale, usato ogni giorno"></p>
+        <p data-en="A mobile-first web app for logging work hours that exports straight into my institute's official timesheet format. Small, but it is the whole loop: a real annoyance, a working tool, shipped on GitHub Pages, used by someone every day." data-it="Una web app mobile-first per registrare le ore di lavoro, che esporta direttamente nel formato del foglio ore ufficiale dell'istituto. E piccola, ma e il ciclo completo: una seccatura reale, uno strumento funzionante, pubblicato su GitHub Pages e usato ogni giorno."></p>
+        <ul class="tags"><li>HTML / JS</li><li>ExcelJS</li><li>GitHub Pages</li></ul>
+      </article>
+    </section>
+
+    <section id="skills">
+      <h2 data-en="Skills" data-it="Competenze"></h2>
+      <div class="skills">
+        <div>
+          <h3 data-en="Programming" data-it="Programmazione"></h3>
+          <p data-en="Python (NumPy, pandas, nibabel, nilearn, scikit-learn), MATLAB, bash and Linux shell scripting, Git and GitHub, LaTeX. Basic SQL and C++." data-it="Python (NumPy, pandas, nibabel, nilearn, scikit-learn), MATLAB, bash e scripting shell su Linux, Git e GitHub, LaTeX. SQL e C++ di base."></p>
+        </div>
+        <div>
+          <h3 data-en="Neuroimaging" data-it="Neuroimaging"></h3>
+          <p data-en="SPM, FSL, FreeSurfer, ANTs, LayNii, Segmentator, ART, fMRIPrep, Presentation. BIDS and Docker for reproducible processing." data-it="SPM, FSL, FreeSurfer, ANTs, LayNii, Segmentator, ART, fMRIPrep, Presentation. BIDS e Docker per un processing riproducibile."></p>
+        </div>
+        <div>
+          <h3 data-en="Methods" data-it="Metodi"></h3>
+          <p data-en="Preprocessing and denoising (ICA-based nuisance regression, motion-parameter PCA, bandpass filtering), multi-echo EPI, GLM and task-evoked analysis, functional connectivity, laminar fMRI at 7T, ROI definition, group-level inference." data-it="Preprocessing e denoising (regressione dei confondenti via ICA, PCA sui parametri di movimento, filtraggio passa-banda), EPI multi-echo, GLM e analisi task-evoked, connettivita funzionale, fMRI laminare a 7T, definizione delle ROI, inferenza a livello di gruppo."></p>
+        </div>
+        <div>
+          <h3 data-en="Machine learning &amp; statistics" data-it="Machine learning e statistica"></h3>
+          <p data-en="Machine-learning analysis of multi-domain clinical data (imaging, genetic, behavioural); artificial neural networks for real-time signal classification; statistical modelling and group-level inference." data-it="Analisi di dati clinici multi-dominio (imaging, genetica, comportamento) con metodi di machine learning; reti neurali artificiali per la classificazione di segnali in tempo reale; modellazione statistica e inferenza di gruppo."></p>
+        </div>
+        <div>
+          <h3 data-en="Clinical &amp; data practice" data-it="Pratica clinica e gestione dati"></h3>
+          <p data-en="fMRI protocol set-up and acquisition in paediatric and neonatal settings, quality control on clinical data, GDPR-compliant handling, interdisciplinary work with clinicians and psychologists." data-it="Definizione del protocollo fMRI e acquisizione in contesto pediatrico e neonatale, controllo di qualita sui dati clinici, trattamento conforme al GDPR, lavoro interdisciplinare con clinici e psicologi."></p>
+        </div>
+        <div>
+          <h3 data-en="Languages" data-it="Lingue"></h3>
+          <p data-en="Italian (native). English (fluent — peer-reviewed publications and international conferences)." data-it="Italiano (madrelingua). Inglese (fluente — pubblicazioni peer-reviewed e congressi internazionali)."></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="background">
+      <h2 data-en="Background" data-it="Percorso"></h2>
+
+      <div class="cv-item">
+        <p class="yr" data-en="Mar 2026 — present" data-it="Mar 2026 — oggi"></p>
+        <div>
+          <h3 data-en="Research Engineer, Neuroimaging Lab" data-it="Research Engineer, Neuroimaging Lab"></h3>
+          <p data-en="IRCCS Eugenio Medea — Associazione La Nostra Famiglia, Bosisio Parini (LC). Laminar fMRI pipeline at ultra-high field; subject fingerprinting on an fMRI+EEG sleep dataset." data-it="IRCCS Eugenio Medea — Associazione La Nostra Famiglia, Bosisio Parini (LC). Pipeline di fMRI laminare ad altissimo campo; fingerprinting individuale su un dataset fMRI+EEG di sonno."></p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <p class="yr">Nov 2022 — Mar 2026</p>
+        <div>
+          <h3 data-en="PhD in Information Engineering (bioengineering)" data-it="Dottorato in Ingegneria dell'Informazione (bioingegneria)"></h3>
+          <p data-en="Università degli Studi di Padova; research carried out at IRCCS Eugenio Medea, Lecco. Thesis: functional MRI data processing and analysis, with application to atypical reading. Supervisor: Alessandra Bertoldo. Visiting researcher at IRCCS Stella Maris, Mar–Jun 2025." data-it="Università degli Studi di Padova; ricerca svolta presso IRCCS Eugenio Medea, Lecco. Tesi: processing e analisi di dati di risonanza magnetica funzionale, con applicazione alla lettura atipica. Relatrice: Alessandra Bertoldo. Visiting researcher presso IRCCS Stella Maris, mar–giu 2025."></p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <p class="yr">Jun 2021 — Sep 2022</p>
+        <div>
+          <h3 data-en="Assistant Research Engineer, Neuroimaging Lab" data-it="Assistant Research Engineer, Neuroimaging Lab"></h3>
+          <p data-en="IRCCS Eugenio Medea, Bosisio Parini (LC). Integrated analysis of imaging, genetic and behavioural data with machine-learning methods, in a pilot project on developmental dyslexia." data-it="IRCCS Eugenio Medea, Bosisio Parini (LC). Analisi integrata di dati di imaging, genetici e comportamentali con metodi di machine learning, in un progetto pilota sulla dislessia evolutiva."></p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <p class="yr">2018 — 2020</p>
+        <div>
+          <h3 data-en="MSc in Biomedical Engineering" data-it="Laurea magistrale in Ingegneria Biomedica"></h3>
+          <p data-en="Politecnico di Milano. Thesis: real-time neural-network gesture recognition from Kinect skeleton data, for humanoid-robot therapy with children with ASD (CARELab, Fondazione Don Gnocchi). Supervisor: Alessandra Pedrocchi." data-it="Politecnico di Milano. Tesi: riconoscimento di gesti in tempo reale con reti neurali da dati scheletrici Kinect, per terapia con robot umanoide in bambini con ASD (CARELab, Fondazione Don Gnocchi). Relatrice: Alessandra Pedrocchi."></p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <p class="yr">2015 — 2018</p>
+        <div>
+          <h3 data-en="BSc in Biomedical Engineering" data-it="Laurea triennale in Ingegneria Biomedica"></h3>
+          <p data-en="Politecnico di Torino. Thesis: comparison of mammography / DBT CAD and breast-density assessment systems (internship at IM3D Clinic Piemonte)." data-it="Politecnico di Torino. Tesi: confronto tra sistemi CAD per mammografia / DBT e valutazione della densita mammaria (tirocinio presso IM3D Clinic Piemonte)."></p>
+        </div>
+      </div>
+      <div class="cv-item">
+        <p class="yr" data-en="Awards" data-it="Riconoscimenti"></p>
+        <div>
+          <h3 data-en="Best oral presentation, XV AIRMM National Congress" data-it="Miglior presentazione orale, XV Congresso Nazionale AIRMM"></h3>
+          <p data-en="Padova, April 2024. Also: AIRMM travel grant for a project on cortical layer interactions and plasticity in reading, using ultra-high-field MRI." data-it="Padova, aprile 2024. Inoltre: AIRMM travel grant per un progetto sulle interazioni tra strati corticali e plasticita nella lettura, con MRI ad altissimo campo."></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <h2 data-en="Publications" data-it="Pubblicazioni"></h2>
+      <p class="count" data-en="Nine peer-reviewed journal articles (three as first author), one preprint, and nine conference contributions at OHBM, ISMRM and ESMRMB. Selected below; full list on ORCID." data-it="Nove articoli su rivista peer-reviewed (tre da prima autrice), un preprint e nove contributi a congressi OHBM, ISMRM ed ESMRMB. Qui una selezione; elenco completo su ORCID."></p>
+      <div class="prose">
+        <div class="pub">
+          <p data-en="Giubergia, A., Mascheretti, S., Lampis, V., et al. (2026). An examination of task-evoked functional MRI data processing in functional connectivity. Journal of Neuroscience Research." data-it="Giubergia, A., Mascheretti, S., Lampis, V., et al. (2026). An examination of task-evoked functional MRI data processing in functional connectivity. Journal of Neuroscience Research."></p>
+          <p class="meta"><a href="https://doi.org/10.1002/jnr.70132">doi.org/10.1002/jnr.70132</a></p>
+        </div>
+        <div class="pub">
+          <p data-en="Giubergia, A., Lampis, V., Mauri, C., et al. (2026). Neural compensation through dorsal stream involvement in visual word recognition under perceptual degradation in a transparent language: evidence from fMRI. Behavioral and Brain Functions." data-it="Giubergia, A., Lampis, V., Mauri, C., et al. (2026). Neural compensation through dorsal stream involvement in visual word recognition under perceptual degradation in a transparent language: evidence from fMRI. Behavioral and Brain Functions."></p>
+          <p class="meta"><a href="https://doi.org/10.1186/s12993-026-00330-4">doi.org/10.1186/s12993-026-00330-4</a></p>
+        </div>
+        <div class="pub">
+          <p data-en="Giubergia, A., Ferrazzi, G., Castellaro, M., et al. (2025). Multi-echo versus single-echo EPI sequences for task-fMRI: a comparative study. Imaging Neuroscience, 3." data-it="Giubergia, A., Ferrazzi, G., Castellaro, M., et al. (2025). Multi-echo versus single-echo EPI sequences for task-fMRI: a comparative study. Imaging Neuroscience, 3."></p>
+          <p class="meta"><span class="ph" data-en="[[DOI]]" data-it="[[DOI]]"></span></p>
+        </div>
+        <div class="pub">
+          <p data-en="Peruzzo, D., Ciceri, T., Mascheretti, S., et al., incl. Giubergia, A. (2024). Brain alteration patterns in children with Duchenne muscular dystrophy: a machine-learning approach to MRI. Journal of Neuromuscular Diseases." data-it="Peruzzo, D., Ciceri, T., Mascheretti, S., et al., incl. Giubergia, A. (2024). Brain alteration patterns in children with Duchenne muscular dystrophy: a machine-learning approach to MRI. Journal of Neuromuscular Diseases."></p>
+        </div>
+        <div class="pub">
+          <p data-en="Ivani, A. S., Giubergia, A., Santos, L., et al. (2022). A gesture recognition algorithm in a robot therapy for ASD children. Biomedical Signal Processing and Control, 74, 103512." data-it="Ivani, A. S., Giubergia, A., Santos, L., et al. (2022). A gesture recognition algorithm in a robot therapy for ASD children. Biomedical Signal Processing and Control, 74, 103512."></p>
+        </div>
+        <p style="margin-top:1.6rem"><a href="https://orcid.org/0000-0002-7084-4220" data-en="Full list on ORCID" data-it="Elenco completo su ORCID"></a></p>
+      </div>
+    </section>
+
+    <footer>
+      <p class="ui" data-en="Built and hosted on GitHub Pages." data-it="Realizzato e ospitato su GitHub Pages."></p>
+    </footer>
+  </main>
+</div>
+
+<script>
+(function(){
+  var nodes = document.querySelectorAll('[data-en]');
+  var btnEn = document.getElementById('btn-en');
+  var btnIt = document.getElementById('btn-it');
+
+  function setLang(lang){
+    for (var i=0;i<nodes.length;i++){
+      var v = nodes[i].dataset[lang];
+      if (v) nodes[i].textContent = v;
+    }
+    document.documentElement.lang = lang;
+    btnEn.setAttribute('aria-pressed', String(lang === 'en'));
+    btnIt.setAttribute('aria-pressed', String(lang === 'it'));
+  }
+
+  btnEn.addEventListener('click', function(){ setLang('en'); });
+  btnIt.addEventListener('click', function(){ setLang('it'); });
+
+  setLang((navigator.language || 'en').slice(0,2) === 'it' ? 'it' : 'en');
+
+  var items = document.querySelectorAll('.rail li');
+  var map = {};
+  for (var j=0;j<items.length;j++){
+    var href = items[j].querySelector('a').getAttribute('href').slice(1);
+    map[href] = items[j];
+  }
+  if ('IntersectionObserver' in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          for (var k=0;k<items.length;k++) items[k].classList.remove('on');
+          if (map[e.target.id]) map[e.target.id].classList.add('on');
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    ['about','work','skills','background','publications'].forEach(function(id){
+      var el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  }
+})();
+</script>
+</body>
+</html>
