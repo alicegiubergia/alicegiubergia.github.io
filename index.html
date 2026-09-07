@@ -1,10 +1,4 @@
 <!DOCTYPE html>
-<!--
-  ============================================================
-  DA COMPLETARE  
-  Opzionale: og-image.png (1200x630) per le anteprime sui social
-  ============================================================
--->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -12,7 +6,7 @@
 <title>Alice Giubergia — neuroimaging engineer, fMRI methods</title>
 <meta name="description" content="Alice Giubergia, PhD. Neuroimaging engineer working on fMRI acquisition and processing methodology: multi-echo EPI, denoising, functional connectivity, laminar fMRI at 7T. Python, SPM, FSL, ANTs, FreeSurfer.">
 <meta property="og:title" content="Alice Giubergia — neuroimaging engineer, fMRI methods">
-<meta property="og:description" content="PhD in bioengineering. I turn large, noisy 4D imaging datasets into validated, reproducible pipelines.">
+<meta property="og:description" content="PhD in bioengineering. I work on fMRI methods: acquisition, denoising, and the processing choices in between.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,14 +37,6 @@
   a{color:inherit;text-decoration:none;border-bottom:1px solid var(--line);transition:border-color .15s,color .15s}
   a:hover{color:var(--cool);border-color:var(--cool)}
   a:focus-visible,button:focus-visible{outline:2px solid var(--cool);outline-offset:3px;border-radius:2px}
-
-  .ph{
-    color:var(--warm);
-    border-bottom:1px dotted var(--warm);
-    font-family:"Archivo",sans-serif;
-    font-size:.82em;
-    letter-spacing:.01em;
-  }
 
   .shell{
     max-width:1180px;
@@ -104,7 +90,25 @@
   }
   .lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 
-  header.hero{padding:8rem 0 4.5rem;max-width:var(--measure)}
+  header.hero{
+    padding:8rem 0 4.5rem;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:1.8rem;
+    max-width:calc(var(--measure) + 11rem);
+  }
+  .portrait{
+    width:132px;
+    aspect-ratio:4/5;
+    object-fit:cover;
+    object-position:center 30%;
+    border-radius:2px;
+    background:var(--paper-2);
+  }
+  @media (min-width:760px){
+    header.hero{grid-template-columns:150px minmax(0,var(--measure));gap:2.6rem;align-items:start}
+    .portrait{width:150px;margin-top:.8rem}
+  }
   .hero h1{
     font-size:clamp(2.7rem,8vw,4.9rem);
     font-weight:600;
@@ -196,23 +200,24 @@
       <li><a href="#background" data-en="Background" data-it="Percorso"></a></li>
       <li><a href="#publications" data-en="Publications" data-it="Pubblicazioni"></a></li>
     </ol>
-    <p class="depth" data-en="Scroll depth" data-it="Profondita"></p>
+    <p class="depth" data-en="Scroll depth" data-it="Profondità"></p>
   </nav>
 
   <main>
     <header class="hero" id="about">
       <img class="portrait" src="photo.jpg" alt="Alice Giubergia" width="300" height="375">
       <div class="hero-text">
-      <h1>Alice Giubergia</h1>
-      <p class="lede" data-en="I work on fMRI methods: acquisition, denoising, and the processing choices in between." data-it="Mi occupo di metodi fMRI: acquisizione, denoising, e le scelte di processing che stanno in mezzo."></p>
-      <p class="bio" data-en="PhD in Information Engineering (bioengineering) and five years of neuroimaging work. My doctoral research was methodological: benchmarking multi-echo against single-echo EPI, testing denoising strategies, and measuring how preprocessing choices propagate into functional-connectivity estimates — three studies published as first author. I like owning a problem end to end: experimental design, acquisition in a clinical setting, Python and MATLAB pipelines, statistical modelling, and explaining the result to people who do not write code." data-it="Dottorato in Ingegneria dell'Informazione (bioingegneria) e cinque anni di lavoro nel neuroimaging. La mia ricerca di dottorato e stata metodologica: confronto tra EPI multi-echo e single-echo, strategie di denoising, e quanto le scelte di preprocessing si propaghino nelle stime di connettivita funzionale — tre studi pubblicati da primo autore. Mi piace seguire un problema dall'inizio alla fine: disegno sperimentale, acquisizione in ambito clinico, pipeline in Python e MATLAB, modellazione statistica, e spiegare il risultato a chi non scrive codice."></p>
-      <p class="where" data-en="Research Engineer, Neuroimaging Lab, IRCCS Eugenio Medea — Associazione La Nostra Famiglia, Bosisio Parini (LC), Italy. Nine peer-reviewed articles, three as first author; conference contributions at OHBM, ISMRM and ESMRMB." data-it="Research Engineer, Neuroimaging Lab, IRCCS Eugenio Medea — Associazione La Nostra Famiglia, Bosisio Parini (LC). Nove articoli peer-reviewed, tre da primo autore; contributi a OHBM, ISMRM ed ESMRMB."></p>
-      <div class="actions">
-        <a class="btn primary ui" href="cv.pdf" data-en="Download CV (PDF)" data-it="Scarica il CV (PDF)"></a>
-        <a class="btn ui" href="mailto:alice.giubergia@gmail.com" data-en="Email" data-it="Email"></a>
-        <a class="btn ui" href="https://www.linkedin.com/in/alicegiubergia">LinkedIn</a>
-        <a class="btn ui" href="https://github.com/alicegiubergia">GitHub</a>
-        <a class="btn ui" href="https://orcid.org/0000-0002-7084-4220">ORCID</a>
+        <h1>Alice Giubergia</h1>
+        <p class="lede" data-en="I work on fMRI methods: acquisition, denoising, and the processing choices in between." data-it="Mi occupo di metodi fMRI: acquisizione, denoising, e le scelte di processing che stanno in mezzo."></p>
+        <p class="bio" data-en="PhD in Information Engineering (bioengineering) and five years of neuroimaging work. My doctoral research was methodological: benchmarking multi-echo against single-echo EPI, testing denoising strategies, and measuring how preprocessing choices propagate into functional-connectivity estimates — three studies published as first author. I like owning a problem end to end: experimental design, acquisition in a clinical setting, Python and MATLAB pipelines, statistical modelling, and explaining the result to people who do not write code." data-it="Dottorato in Ingegneria dell'Informazione (bioingegneria) e cinque anni di lavoro nel neuroimaging. La mia ricerca di dottorato è stata metodologica: confronto tra EPI multi-echo e single-echo, strategie di denoising, e quanto le scelte di preprocessing si propaghino nelle stime di connettività funzionale — tre studi pubblicati da prima autrice. Mi piace seguire un problema dall'inizio alla fine: disegno sperimentale, acquisizione in ambito clinico, pipeline in Python e MATLAB, modellazione statistica, e spiegare il risultato a chi non scrive codice."></p>
+        <p class="where" data-en="Research Engineer, Neuroimaging Lab, IRCCS Eugenio Medea — Associazione La Nostra Famiglia, Bosisio Parini (LC), Italy. Nine peer-reviewed articles, three as first author; conference contributions at OHBM, ISMRM and ESMRMB." data-it="Research Engineer, Neuroimaging Lab, IRCCS Eugenio Medea — Associazione La Nostra Famiglia, Bosisio Parini (LC). Nove articoli peer-reviewed, tre da prima autrice; contributi a OHBM, ISMRM ed ESMRMB."></p>
+        <div class="actions">
+          <a class="btn primary ui" href="cv.pdf" data-en="Download CV (PDF)" data-it="Scarica il CV (PDF)"></a>
+          <a class="btn ui" href="mailto:alice.giubergia@gmail.com" data-en="Email" data-it="Email"></a>
+          <a class="btn ui" href="https://www.linkedin.com/in/alicegiubergia">LinkedIn</a>
+          <a class="btn ui" href="https://github.com/alicegiubergia">GitHub</a>
+          <a class="btn ui" href="https://orcid.org/0000-0002-7084-4220">ORCID</a>
+        </div>
       </div>
     </header>
 
@@ -223,7 +228,7 @@
         <h3 data-en="Multi-echo vs single-echo EPI for task fMRI" data-it="EPI multi-echo e single-echo per la fMRI da task"></h3>
         <p class="role" data-en="First author — Imaging Neuroscience, 2025" data-it="Prima autrice — Imaging Neuroscience, 2025"></p>
         <p data-en="Multi-echo acquisition promises cleaner signal, but at a cost in sequence complexity and processing. I ran the head-to-head comparison on task fMRI data so the choice could be made on evidence rather than on habit." data-it="L'acquisizione multi-echo promette un segnale più pulito, ma al prezzo di una sequenza e di un processing più complessi. Ho impostato il confronto diretto su dati di fMRI da task, per rendere la scelta una decisione basata su evidenza e non sull'abitudine."></p>
-        <p class="out"><span data-en="Neither won outright: me-fmri came out ahead on subject-level reliability, while se-fmri came out ahead on activation magnitude and group-level statistical power." data-it="Nessuna delle due vince del tutto: me-fmri è superiore in affidabilità a livello di singolo soggetto, mentre se-fmri è superiore in ampiezza di attivazione e potenza statistica a livello di gruppo."></span></p>
+        <p class="out"><span data-en="Neither won outright: ME-fMRI came out ahead on subject-level reliability, while SE-fMRI came out ahead on activation magnitude and group-level statistical power." data-it="Nessuna delle due vince del tutto: la ME-fMRI è superiore in affidabilità a livello di singolo soggetto, mentre la SE-fMRI è superiore in ampiezza di attivazione e potenza statistica a livello di gruppo."></span></p>
         <ul class="tags"><li>MATLAB</li><li>SPM</li><li data-en="Multi-echo EPI" data-it="EPI multi-echo"></li><li data-en="Denoising" data-it="Denoising"></li><li data-en="Sequence benchmarking" data-it="Confronto tra sequenze"></li></ul>
       </article>
 
@@ -231,14 +236,14 @@
         <h3 data-en="How processing choices propagate into functional connectivity" data-it="Come le scelte di processing si propagano nella connettività funzionale"></h3>
         <p class="role" data-en="First author — Journal of Neuroscience Research, 2026" data-it="Prima autrice — Journal of Neuroscience Research, 2026"></p>
         <p data-en="Connectivity estimated from task-evoked data depends on a long chain of preprocessing decisions that are usually taken silently. I made that chain explicit and quantified how much each choice moves the final estimate." data-it="La connettività stimata da dati task-evoked dipende da una lunga catena di decisioni di preprocessing, di solito prese in silenzio. Ho reso esplicita quella catena e quantificato quanto ogni scelta sposti la stima finale."></p>
-        <p class="out"><span data-en="Task regression doesn't remove task information from connectomes, but it does not change clinical group classification." data-it="La regressione del task non elimina l'informazione task dai connettomi, ma non cambia la classificazione dei gruppi clinici."></span></p>
-        <ul class="tags"><li>Python</li><li data-en="ICA-based nuisance regression" data-it="Regressione dei confondenti via ICA"></li><li data-en="Functional connectivity" data-it="Connettivita funzionale"></li><li data-en="Group-level inference" data-it="Inferenza di gruppo"></li></ul>
+        <p class="out"><span data-en="Task regression does not remove task information from the connectomes, but it does not change clinical group classification either." data-it="La regressione del task non elimina l'informazione legata al task dai connettomi, ma non cambia nemmeno la classificazione dei gruppi clinici."></span></p>
+        <ul class="tags"><li>Python</li><li data-en="ICA-based nuisance regression" data-it="Regressione dei confondenti via ICA"></li><li data-en="Functional connectivity" data-it="Connettività funzionale"></li><li data-en="Group-level inference" data-it="Inferenza di gruppo"></li></ul>
       </article>
 
       <article class="project">
         <h3 data-en="Reading words that are hard to see" data-it="Leggere parole difficili da vedere"></h3>
         <p class="role" data-en="First author — Behavioral and Brain Functions, 2026" data-it="Prima autrice — Behavioral and Brain Functions, 2026"></p>
-        <p data-en="I designed, implemented and validated an fMRI paradigm for visually degraded word reading — from programming the task to collecting the MR data — and used it to ask how the dorsal stream is recruited when recognition gets harder in a transparent orthography." data-it="Ho disegnato, implementato e validato un paradigma fMRI per la lettura di parole visivamente degradate — dalla programmazione del task all'acquisizione dei dati MR — e l'ho usato per studiare come viene reclutato lo stream dorsale quando il riconoscimento si fa piu difficile, in un'ortografia trasparente."></p>
+        <p data-en="I designed, implemented and validated an fMRI paradigm for visually degraded word reading — from programming the task to collecting the MR data — and used it to ask how the dorsal stream is recruited when recognition gets harder in a transparent orthography." data-it="Ho disegnato, implementato e validato un paradigma fMRI per la lettura di parole visivamente degradate — dalla programmazione del task all'acquisizione dei dati MR — e l'ho usato per studiare come viene reclutato lo stream dorsale quando il riconoscimento si fa più difficile, in un'ortografia trasparente."></p>
         <p class="out" data-en="Published as first author; the paradigm is now reused in follow-up work in the lab." data-it="Pubblicato come prima autrice; il paradigma viene ora riutilizzato in lavori successivi del laboratorio."></p>
         <ul class="tags"><li data-en="Experimental design" data-it="Disegno sperimentale"></li><li>Presentation&reg;</li><li>SPM</li><li data-en="Task fMRI, GLM" data-it="fMRI da task, GLM"></li></ul>
       </article>
@@ -246,7 +251,7 @@
       <article class="project">
         <h3 data-en="A laminar fMRI pipeline at 7T" data-it="Una pipeline di fMRI laminare a 7T"></h3>
         <p class="role" data-en="Current work — supported by an AIRMM travel grant" data-it="Lavoro in corso — sostenuto da un AIRMM travel grant"></p>
-        <p data-en="Layer-specific fMRI asks where inside the cortical ribbon a signal comes from, so the whole analysis rests on segmentation and depth sampling. I built the end-to-end pipeline with ANTs, FreeSurfer and LayNii, producing group-level cortical-depth activation profiles across ROIs." data-it="La fMRI laminare chiede in quale punto del nastro corticale nasce il segnale: tutta l'analisi poggia quindi su segmentazione e campionamento in profondita. Ho costruito la pipeline end-to-end con ANTs, FreeSurfer e LayNii, ottenendo profili di attivazione in profondita corticale a livello di gruppo su piu ROI."></p>
+        <p data-en="Layer-specific fMRI asks where inside the cortical ribbon a signal comes from, so the whole analysis rests on segmentation and depth sampling. I built the end-to-end pipeline with ANTs, FreeSurfer and LayNii, producing group-level cortical-depth activation profiles across ROIs." data-it="La fMRI laminare chiede in quale punto del nastro corticale nasce il segnale: tutta l'analisi poggia quindi su segmentazione e campionamento in profondità. Ho costruito la pipeline end-to-end con ANTs, FreeSurfer e LayNii, ottenendo profili di attivazione in profondità corticale a livello di gruppo su più ROI."></p>
         <ul class="tags"><li>ANTs</li><li>FreeSurfer</li><li>LayNii</li><li>7T</li><li data-en="Surface-based analysis" data-it="Analisi su superficie"></li></ul>
       </article>
 
@@ -265,7 +270,7 @@
         </div>
         <div>
           <h3 data-en="Methods" data-it="Metodi"></h3>
-          <p data-en="Preprocessing and denoising (ICA-based nuisance regression, motion-parameter PCA, bandpass filtering), multi-echo EPI, GLM and task-evoked analysis, functional connectivity, laminar fMRI at 7T, ROI definition, group-level inference." data-it="Preprocessing e denoising (regressione dei confondenti via ICA, PCA sui parametri di movimento, filtraggio passa-banda), EPI multi-echo, GLM e analisi task-evoked, connettivita funzionale, fMRI laminare a 7T, definizione delle ROI, inferenza a livello di gruppo."></p>
+          <p data-en="Preprocessing and denoising (ICA-based nuisance regression, motion-parameter PCA, bandpass filtering), multi-echo EPI, GLM and task-evoked analysis, functional connectivity, laminar fMRI at 7T, ROI definition, group-level inference." data-it="Preprocessing e denoising (regressione dei confondenti via ICA, PCA sui parametri di movimento, filtraggio passa-banda), EPI multi-echo, GLM e analisi task-evoked, connettività funzionale, fMRI laminare a 7T, definizione delle ROI, inferenza a livello di gruppo."></p>
         </div>
         <div>
           <h3 data-en="Machine learning &amp; statistics" data-it="Machine learning e statistica"></h3>
@@ -273,7 +278,7 @@
         </div>
         <div>
           <h3 data-en="Clinical &amp; data practice" data-it="Pratica clinica e gestione dati"></h3>
-          <p data-en="fMRI protocol set-up and acquisition in paediatric and neonatal settings, quality control on clinical data, GDPR-compliant handling, interdisciplinary work with clinicians and psychologists." data-it="Definizione del protocollo fMRI e acquisizione in contesto pediatrico e neonatale, controllo di qualita sui dati clinici, trattamento conforme al GDPR, lavoro interdisciplinare con clinici e psicologi."></p>
+          <p data-en="fMRI protocol set-up and acquisition in paediatric and neonatal settings, quality control on clinical data, GDPR-compliant handling, interdisciplinary work with clinicians and psychologists." data-it="Definizione del protocollo fMRI e acquisizione in contesto pediatrico e neonatale, controllo di qualità sui dati clinici, trattamento conforme al GDPR, lavoro interdisciplinare con clinici e psicologi."></p>
         </div>
         <div>
           <h3 data-en="Languages" data-it="Lingue"></h3>
@@ -317,14 +322,14 @@
         <p class="yr">2015 — 2018</p>
         <div>
           <h3 data-en="BSc in Biomedical Engineering" data-it="Laurea triennale in Ingegneria Biomedica"></h3>
-          <p data-en="Politecnico di Torino. Thesis: comparison of mammography / DBT CAD and breast-density assessment systems (internship at IM3D Clinic Piemonte)." data-it="Politecnico di Torino. Tesi: confronto tra sistemi CAD per mammografia / DBT e valutazione della densita mammaria (tirocinio presso IM3D Clinic Piemonte)."></p>
+          <p data-en="Politecnico di Torino. Thesis: comparison of mammography / DBT CAD and breast-density assessment systems (internship at IM3D Clinic Piemonte)." data-it="Politecnico di Torino. Tesi: confronto tra sistemi CAD per mammografia / DBT e valutazione della densità mammaria (tirocinio presso IM3D Clinic Piemonte)."></p>
         </div>
       </div>
       <div class="cv-item">
         <p class="yr" data-en="Awards" data-it="Riconoscimenti"></p>
         <div>
           <h3 data-en="Best oral presentation, XV AIRMM National Congress" data-it="Miglior presentazione orale, XV Congresso Nazionale AIRMM"></h3>
-          <p data-en="Padova, April 2024. Also: AIRMM travel grant for a project on cortical layer interactions and plasticity in reading, using ultra-high-field MRI." data-it="Padova, aprile 2024. Inoltre: AIRMM travel grant per un progetto sulle interazioni tra strati corticali e plasticita nella lettura, con MRI ad altissimo campo."></p>
+          <p data-en="Padova, April 2024. Also: AIRMM travel grant for a project on cortical layer interactions and plasticity in reading, using ultra-high-field MRI." data-it="Padova, aprile 2024. Inoltre: AIRMM travel grant per un progetto sulle interazioni tra strati corticali e plasticità nella lettura, con MRI ad altissimo campo."></p>
         </div>
       </div>
     </section>
@@ -343,7 +348,7 @@
         </div>
         <div class="pub">
           <p data-en="Giubergia, A., Ferrazzi, G., Castellaro, M., et al. (2025). Multi-echo versus single-echo EPI sequences for task-fMRI: a comparative study. Imaging Neuroscience, 3." data-it="Giubergia, A., Ferrazzi, G., Castellaro, M., et al. (2025). Multi-echo versus single-echo EPI sequences for task-fMRI: a comparative study. Imaging Neuroscience, 3."></p>
-          <p class="meta"><span data-en="https://doi.org/10.1162/imag.a.94" data-it="https://doi.org/10.1162/imag.a.94"></span></p>
+          <p class="meta"><a href="https://doi.org/10.1162/imag.a.94">doi.org/10.1162/imag.a.94</a></p>
         </div>
         <div class="pub">
           <p data-en="Peruzzo, D., Ciceri, T., Mascheretti, S., et al., incl. Giubergia, A. (2024). Brain alteration patterns in children with Duchenne muscular dystrophy: a machine-learning approach to MRI. Journal of Neuromuscular Diseases." data-it="Peruzzo, D., Ciceri, T., Mascheretti, S., et al., incl. Giubergia, A. (2024). Brain alteration patterns in children with Duchenne muscular dystrophy: a machine-learning approach to MRI. Journal of Neuromuscular Diseases."></p>
