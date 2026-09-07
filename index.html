@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <!--
   ============================================================
-  DA COMPLETARE — restano 4 segnaposto, marcati [[ ... ]]
-  e visibili in ambra sulla pagina. Cerca "[[" .
-    1. risultato principale dello studio multi-echo vs single-echo
-    2. risultato principale dello studio su processing e connettivita
-    3. stato / risultato del progetto fingerprint sul sonno
-    4. DOI di Imaging Neuroscience 2025
-  Da mettere nella stessa cartella: cv.pdf
+  DA COMPLETARE  
   Opzionale: og-image.png (1200x630) per le anteprime sui social
   ============================================================
 -->
@@ -226,16 +220,16 @@
       <article class="project">
         <h3 data-en="Multi-echo vs single-echo EPI for task fMRI" data-it="EPI multi-echo e single-echo per la fMRI da task"></h3>
         <p class="role" data-en="First author — Imaging Neuroscience, 2025" data-it="Prima autrice — Imaging Neuroscience, 2025"></p>
-        <p data-en="Multi-echo acquisition promises cleaner signal, but at a cost in sequence complexity and processing. I ran the head-to-head comparison on task fMRI data so the choice could be made on evidence rather than on habit." data-it="L'acquisizione multi-echo promette un segnale piu pulito, ma al prezzo di una sequenza e di un processing piu complessi. Ho impostato il confronto diretto su dati di fMRI da task, per rendere la scelta una decisione basata su evidenza e non sull'abitudine."></p>
-        <p class="out"><span class="ph" data-en="[[one line: the main result — which sequence won, on which metric]]" data-it="[[una riga: il risultato principale — quale sequenza vince, su quale metrica]]"></span></p>
+        <p data-en="Multi-echo acquisition promises cleaner signal, but at a cost in sequence complexity and processing. I ran the head-to-head comparison on task fMRI data so the choice could be made on evidence rather than on habit." data-it="L'acquisizione multi-echo promette un segnale più pulito, ma al prezzo di una sequenza e di un processing più complessi. Ho impostato il confronto diretto su dati di fMRI da task, per rendere la scelta una decisione basata su evidenza e non sull'abitudine."></p>
+        <p class="out"><span class="ph" data-en="Neither won outright: me-fmri came out ahead on subject-level reliability, while se-fmri came out ahead on activation magnitude and group-level statistical power." data-it="Nessuna delle due vince del tutto: me-fmri è superiore in affidabilità a livello di singolo soggetto, mentre se-fmri è superiore in ampiezza di attivazione e potenza statistica a livello di gruppo."></span></p>
         <ul class="tags"><li>MATLAB</li><li>SPM</li><li data-en="Multi-echo EPI" data-it="EPI multi-echo"></li><li data-en="Denoising" data-it="Denoising"></li><li data-en="Sequence benchmarking" data-it="Confronto tra sequenze"></li></ul>
       </article>
 
       <article class="project">
-        <h3 data-en="How processing choices propagate into functional connectivity" data-it="Come le scelte di processing si propagano nella connettivita funzionale"></h3>
+        <h3 data-en="How processing choices propagate into functional connectivity" data-it="Come le scelte di processing si propagano nella connettività funzionale"></h3>
         <p class="role" data-en="First author — Journal of Neuroscience Research, 2026" data-it="Prima autrice — Journal of Neuroscience Research, 2026"></p>
-        <p data-en="Connectivity estimated from task-evoked data depends on a long chain of preprocessing decisions that are usually taken silently. I made that chain explicit and quantified how much each choice moves the final estimate." data-it="La connettivita stimata da dati task-evoked dipende da una lunga catena di decisioni di preprocessing, di solito prese in silenzio. Ho reso esplicita quella catena e quantificato quanto ogni scelta sposti la stima finale."></p>
-        <p class="out"><span class="ph" data-en="[[one line: what the comparison showed, and the practical recommendation]]" data-it="[[una riga: cosa ha mostrato il confronto e la raccomandazione pratica]]"></span></p>
+        <p data-en="Connectivity estimated from task-evoked data depends on a long chain of preprocessing decisions that are usually taken silently. I made that chain explicit and quantified how much each choice moves the final estimate." data-it="La connettività stimata da dati task-evoked dipende da una lunga catena di decisioni di preprocessing, di solito prese in silenzio. Ho reso esplicita quella catena e quantificato quanto ogni scelta sposti la stima finale."></p>
+        <p class="out"><span class="ph" data-en="Task regression doesn't remove task information from connectomes, but it does not change clinical group classification." data-it="La regressione del task non elimina l'informazione task dai connettomi, ma non cambia la classificazione dei gruppi clinici."></span></p>
         <ul class="tags"><li>Python</li><li data-en="ICA-based nuisance regression" data-it="Regressione dei confondenti via ICA"></li><li data-en="Functional connectivity" data-it="Connettivita funzionale"></li><li data-en="Group-level inference" data-it="Inferenza di gruppo"></li></ul>
       </article>
 
@@ -252,14 +246,6 @@
         <p class="role" data-en="Current work — supported by an AIRMM travel grant" data-it="Lavoro in corso — sostenuto da un AIRMM travel grant"></p>
         <p data-en="Layer-specific fMRI asks where inside the cortical ribbon a signal comes from, so the whole analysis rests on segmentation and depth sampling. I built the end-to-end pipeline with ANTs, FreeSurfer and LayNii, producing group-level cortical-depth activation profiles across ROIs." data-it="La fMRI laminare chiede in quale punto del nastro corticale nasce il segnale: tutta l'analisi poggia quindi su segmentazione e campionamento in profondita. Ho costruito la pipeline end-to-end con ANTs, FreeSurfer e LayNii, ottenendo profili di attivazione in profondita corticale a livello di gruppo su piu ROI."></p>
         <ul class="tags"><li>ANTs</li><li>FreeSurfer</li><li>LayNii</li><li>7T</li><li data-en="Surface-based analysis" data-it="Analisi su superficie"></li></ul>
-      </article>
-
-      <article class="project">
-        <h3 data-en="An individual fingerprint from sleep-state transitions" data-it="Un'impronta individuale dalle transizioni tra stati di sonno"></h3>
-        <p class="role" data-en="Current work — simultaneous fMRI + EEG" data-it="Lavoro in corso — fMRI + EEG simultanei"></p>
-        <p data-en="Brain activity is usually summarised by its average. I looked at the dynamics instead: state-transition matrices built from EEG-scored 30-second epochs, cost-based distance metrics between them, and classification validated on held-out runs — asking whether those transitions are stable enough within a person to identify them." data-it="L'attivita cerebrale di solito viene riassunta dalla sua media. Qui ho guardato la dinamica: matrici di transizione tra stati costruite su epoche di 30 secondi scorate all'EEG, metriche di distanza basate sul costo, e classificazione validata su run tenute fuori — per capire se quelle transizioni siano abbastanza stabili dentro un soggetto da identificarlo."></p>
-        <p class="out"><span class="ph" data-en="[[one line: identification accuracy, or current status if unpublished]]" data-it="[[una riga: accuratezza di identificazione, o stato attuale se non ancora pubblicato]]"></span></p>
-        <ul class="tags"><li>Python</li><li>EEG + fMRI</li><li data-en="State dynamics" data-it="Dinamiche di stato"></li><li data-en="Classification, cross-validation" data-it="Classificazione, cross-validazione"></li></ul>
       </article>
 
       <article class="project">
@@ -361,7 +347,7 @@
         </div>
         <div class="pub">
           <p data-en="Giubergia, A., Ferrazzi, G., Castellaro, M., et al. (2025). Multi-echo versus single-echo EPI sequences for task-fMRI: a comparative study. Imaging Neuroscience, 3." data-it="Giubergia, A., Ferrazzi, G., Castellaro, M., et al. (2025). Multi-echo versus single-echo EPI sequences for task-fMRI: a comparative study. Imaging Neuroscience, 3."></p>
-          <p class="meta"><span class="ph" data-en="[[DOI]]" data-it="[[DOI]]"></span></p>
+          <p class="meta"><span class="ph" data-en="https://doi.org/10.1162/imag.a.94" data-it="https://doi.org/10.1162/imag.a.94"></span></p>
         </div>
         <div class="pub">
           <p data-en="Peruzzo, D., Ciceri, T., Mascheretti, S., et al., incl. Giubergia, A. (2024). Brain alteration patterns in children with Duchenne muscular dystrophy: a machine-learning approach to MRI. Journal of Neuromuscular Diseases." data-it="Peruzzo, D., Ciceri, T., Mascheretti, S., et al., incl. Giubergia, A. (2024). Brain alteration patterns in children with Duchenne muscular dystrophy: a machine-learning approach to MRI. Journal of Neuromuscular Diseases."></p>
